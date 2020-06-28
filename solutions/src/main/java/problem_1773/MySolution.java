@@ -1,17 +1,20 @@
+package problem_1773;
+
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * https://codeforces.com/problemset/problem/1373/B
+ * this class can run the iumplementation solver that solve the 1373B problem.
+ * check the definition of the solve method in the following interface {@link ISolve1373B}
+ *
  */
 public class MySolution {
     private static Scanner scanner = new Scanner(System.in);
-    private Solver algo;
+    private ISolve1373B solver;
 
-    public MySolution( Solver algo ) {
-        this.algo = algo;
+    public MySolution( ISolve1373B solver ) {
+        this.solver = solver;
     }
 
     public static void main( String[] args) {
@@ -20,11 +23,14 @@ public class MySolution {
         final String[] sequences = new String[numberOfCases];
         solution.populateArray(sequences);
         Arrays.stream(sequences)
-              .forEach(s ->  solution.solve(s, "Alice", "Bob"));
+              .forEach(s ->  {
+                  String winner = solution.solve(s, "Alice", "Bob");
+                  System.out.println(winner);
+              });
     }
 
-    public void solve(String seq, String firstPlayer, String secondPlayer){
-        this.algo.solveSequence(seq, firstPlayer, secondPlayer);
+    public String solve(String seq, String firstPlayer, String secondPlayer){
+        return this.solver.solveSequence(seq, firstPlayer, secondPlayer);
     }
 
     /**
@@ -36,13 +42,5 @@ public class MySolution {
         for (int i = 0; i < sequences.length; i++) {
             sequences[i]= scanner.next();
         }
-    }
-
-    public Solver getAlgo() {
-        return algo;
-    }
-
-    public void setAlgo( Solver algo ) {
-        this.algo = algo;
     }
 }

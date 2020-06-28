@@ -12,10 +12,7 @@ package problem_1773;
  * So if min(c0,c1) is odd then Alice wins, otherwise Bob wins.
  */
 public class CodeForceSolution implements ISolve1373B {
-    /**
-     *
-     *
-     */
+
     @Override
     public String solveSequence( String sequence, String firstPlayer, String secondPlayer ) {
         int count0 = (int) sequence.chars()
